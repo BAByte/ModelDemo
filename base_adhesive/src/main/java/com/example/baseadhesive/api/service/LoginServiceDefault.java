@@ -5,18 +5,23 @@ import com.example.module_annotations.ServiceBelong;
 @ServiceBelong(serviceName = "com.example.module_login.LoginService")
 public class LoginServiceDefault implements ILoginService {
     @Override
+    public void release() {
+
+    }
+
+    @Override
     public String getUserJson() {
-        return "a";
+        return "无用户";
     }
 
     @Override
     public String getId() {
-        return "a";
+        return "无id";
     }
 
     @Override
     public String getName() {
-        return "a";
+        return "无名字";
     }
 
     @Override

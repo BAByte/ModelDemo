@@ -43,13 +43,13 @@ public class ActivityDirectional {
         }
 
 
-         public void toActivity(Context context, String where){
-             Intent i=new Intent(context,classHashMap.get(where));
-             context.startActivity(i);
-         }
-
-         class DirectionalBuilder{
-
+         public Class getClazz(String where){
+            Class c=classHashMap.get(where);
+            if (c!=null)
+             return c;
+            else {
+               throw new NoClassDefFoundError("模块未挂载");
+            }
          }
     }
 

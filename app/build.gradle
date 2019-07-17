@@ -29,6 +29,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation project(path: ':base_app')
 
-    if (!isRunAlone.toBoolean())
+    if (!isRunAlone.toBoolean()) {
         runtimeOnly project(path: ':module_login')
+        runtimeOnly project(path: ':module_userinfo')
+    }
 }

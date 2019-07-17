@@ -9,7 +9,9 @@ public class AppConfig {
 
     private static final  String MODEL_LOGIN ="com.example.module_login.LoginApplication";
 
+    private static final  String MODEL_USERINFO ="com.example.module_userinfo.UserApplication";
+
     //选择要挂载的模块
-    public static String[] mountModelApplication={MODEL_LOGIN};
+    public static String[] mountModelApplication={MODEL_LOGIN,MODEL_USERINFO};
 
 }

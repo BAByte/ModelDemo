@@ -5,7 +5,13 @@ import com.example.baseadhesive.api.service.ILoginService;
 
 
 
+
 public class LoginService implements ILoginService {
+    @Override
+    public void release() {
+         UserModel.getInstance().release();
+    }
+
     @Override
     public String getUserJson() {
         return UserModel.getInstance().getUser().toString();

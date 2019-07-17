@@ -9,9 +9,10 @@ if (isRunAlone.toBoolean()) {
 android {
     compileSdkVersion 28
 
-    resourcePrefix "login_"
+
 
     defaultConfig {
+
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -21,8 +22,9 @@ android {
 
         //单独调试需要设置Application的ID
         if (isRunAlone.toBoolean()) {
-            applicationId "com.example.login"
+            applicationId "com.example.module_userinfo"
         }
+
 
         minSdkVersion 16
         targetSdkVersion 28
@@ -40,7 +42,6 @@ android {
         }
     }
 
-
     sourceSets {
         main {
             // 单独调试与集成调试时使用不同的 AndroidManifest.xml 文件
@@ -51,6 +52,7 @@ android {
             }
         }
     }
+
 }
 
 dependencies {
@@ -64,5 +66,4 @@ dependencies {
     implementation project(path: ':base_app')
     annotationProcessor project(path: ':module_processors')
     implementation project(path: ':module_annotations')
-
 }

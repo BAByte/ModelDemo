@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/module_annotations" />
             <option value="$PROJECT_DIR$/module_login" />
             <option value="$PROJECT_DIR$/module_processors" />
+            <option value="$PROJECT_DIR$/module_userinfo" />
             <option value="$PROJECT_DIR$/my_annotations" />
           </set>
         </option>

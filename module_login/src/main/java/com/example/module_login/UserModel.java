@@ -15,10 +15,14 @@ public class UserModel {
         private User user;
         private UserModelImp(){
             //这里不处理加载数据的了，懒得写，直接new
-            user=new User("1232124","李海华",true);
+            user=new User();
         }
         public User getUser(){
             return user;
         };
+
+        public void  release(){
+            user=new User();
+        }
     }
 }

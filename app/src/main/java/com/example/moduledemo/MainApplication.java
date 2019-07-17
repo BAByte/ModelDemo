@@ -1,6 +1,7 @@
 package com.example.moduledemo;
 
 import android.app.Application;
+import android.util.Log;
 
 import com.example.baseadhesive.api.AppConfig;
 import com.example.baseapp.BaseApplication;
@@ -19,6 +20,7 @@ public class MainApplication extends BaseApplication {
         for (String module: AppConfig.mountModelApplication){
             try {
                 Class clazz = Class.forName(module);
+                Log.d(TAG, "init: "+clazz);
                 BaseApplication baseApp = (BaseApplication) clazz.newInstance();
                 baseApp.init(this);
             } catch (ClassNotFoundException e) {
