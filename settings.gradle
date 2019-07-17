@@ -1,0 +1,1 @@
+include ':app', ':base_adhesive', ':module_login', ':base_app', ':lib', ':my_annotations', ':module_annotations', ':module_processors'
