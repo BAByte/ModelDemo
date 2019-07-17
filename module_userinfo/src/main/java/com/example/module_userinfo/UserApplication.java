@@ -4,6 +4,7 @@ import android.app.Application;
 import android.util.Log;
 
 import com.example.baseadhesive.api.ActivityDirectional;
+import com.example.baseadhesive.api.ServiceFactory;
 import com.example.baseapp.BaseApplication;
 
 public class UserApplication extends BaseApplication {
@@ -11,6 +12,7 @@ public class UserApplication extends BaseApplication {
     @Override
     public void init(Application application) {
         ActivityDirectional.getInstance().addMap("com.example.module_userinfo.ActivityConfig");
+        ServiceFactory.getInstance().addService("com.example.module_userinfo.UserInfoService",new UserInfoService());
         Log.d(TAG, "init: 用户信息模块");
     }
 }

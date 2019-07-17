@@ -4,12 +4,15 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.baseadhesive.api.ActivityDirectional;
+import com.example.baseadhesive.api.ServiceFactory;
+import com.example.baseadhesive.api.service.IUserInfo;
 import com.example.module_annotations.ActivityAnnotation;
 
 @ActivityAnnotation(activityName = "LoginMainActivity")
@@ -48,5 +51,8 @@ public class LoginMainActivity extends AppCompatActivity {
 
             }
         });
+
+        IUserInfo userInfo= (IUserInfo) ServiceFactory.getInstance().getService("com.example.module_userinfo.UserInfoService");
+        Toast.makeText(this, userInfo.get(), Toast.LENGTH_SHORT).show();
     }
 }

@@ -7,5 +7,6 @@ public interface IServiceFactory {
     public void addService(String id,Object o);
 
     //获取服务
-    public Object getService(String id);
+    public Object
+    getService(String id);
 }
