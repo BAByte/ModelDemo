@@ -105,7 +105,7 @@ public class MainApplication extends BaseApplication {
         super.onCreate();
         
         //这个方法为主模块调用，其他模块不需要调用，主要是为了选择要挂载哪些模块，以及传入Application
-        init(this,这里等下传入要加载的模块的Application类包名);
+        init(this,这里等下传入要加载的模块Application类的完整包名);
     }
 }
 
@@ -115,7 +115,7 @@ public class MainApplication extends BaseApplication {
 
 那么我们的主项目就写好了，这里我们有两个模块登录和用户信息，我们看看添加一个登录模块后需要怎么处理(怎么导入或者新建Module自己查哦！！)
 
-+ 先导入在build.gradle声明全局模块
++ 先在module的build.gradle声明全局模块
 
 ~~~xml
 dependencies {
@@ -149,7 +149,7 @@ public class LoginApplication extends BaseApplication {
     public void onCreate(Application application) {
     }
 
-        //我们怎么保证模块的Application的生命周期能及时回调？说实话我目前觉得这个是没有必要的，因为所有模块最终依赖的都是主模块的Application实例，所以假设我们不去操作Application的生命周期的话（如果是应用级别的，建议都保留在主模块中初始化，这样一般就不用管Application的生命周期），我们是不需要去管模块之间的，但是考虑到可能在某些场景需要将模块的一些东西进行释放，我还是写了回调方法。比如下面这些，你可以直接用。
+        //我们怎么保证模块的Application的生命周期能及时回调？说实话我目前觉得这个是没有必要的，因为所有模块最终依赖的都是主模块的Application实例，所以假设我们不去操作Application的生命周期的话（如果第三方库运行时是应用级别的，建议都保留在主模块中初始化，这样一般就不用管Application的生命周期，如果其他模块想用这个第三方库，你在主模块的build.gradle引入时请用api，而不要用implementation），我们是不需要去管模块之间的，但是考虑到可能在某些场景需要将模块的一些东西进行释放，我还是写了回调方法。比如下面这些，你可以直接用。
     
         @Override
     public void onTrimMemory(int level) {
