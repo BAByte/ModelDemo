@@ -11,10 +11,10 @@ import java.io.IOException;
 
 public class LoginApplication extends BaseApplication {
     private static final String TAG = "LoginApplication";
-
+    
     @Override
-    public void init(Application application) {
-        Log.d(TAG, "init: ");
+    public void onCreate(Application application) {
+        Log.d(TAG, "init: 爱爱啊");
         try {
             ServiceFactory.getInstance().addService("LoginService",new LoginService());
         } catch (IOException e) {

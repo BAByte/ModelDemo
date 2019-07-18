@@ -42,17 +42,22 @@ public class LoginMainActivity extends AppCompatActivity {
                     Class c= ActivityDirectional.getInstance().getClazz("UserInfoMainActivity");
                     Intent intent=new Intent(LoginMainActivity.this,c);
                     startActivity(intent);
+                    finish();
                 }catch (NoClassDefFoundError e){
-                    Toast.makeText(LoginMainActivity.this, "模块未挂载！", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
 
-                finish();
+
 
             }
         });
 
-        IUserInfo userInfo= (IUserInfo) ServiceFactory.getInstance().getService("com.example.module_userinfo.UserInfoService");
+        IUserInfo userInfo= (IUserInfo) ServiceFactory.getInstance().getService("UserInfoService");
         Toast.makeText(this, userInfo.get(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }

@@ -46,10 +46,11 @@ public class ServiceFactory {
 
         @Override
         public Object getService(String id) {
-            Log.d(TAG, "getService: ");
+            Log.d(TAG, "getService: "+id);
             Object o = hashMap.get(id);
             if (o == null) {
                 o = getDefaultAPI(id);
+                Log.d(TAG, "getService: "+o);
             }
             return o;
         }

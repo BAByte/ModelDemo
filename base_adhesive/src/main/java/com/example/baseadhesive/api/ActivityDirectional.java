@@ -48,7 +48,7 @@ public class ActivityDirectional {
             if (c!=null)
              return c;
             else {
-               throw new NoClassDefFoundError("模块未挂载");
+               throw new NoClassDefFoundError(where+"模块未挂载");
             }
          }
     }

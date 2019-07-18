@@ -10,8 +10,9 @@ import java.io.IOException;
 
 public class UserApplication extends BaseApplication {
     private static final String TAG = "UserApplication";
+
     @Override
-    public void init(Application application)  {
+    public void onCreate(Application application) {
         ActivityConfig.initActivtyConfig();
         try {
             ServiceFactory.getInstance().addService("UserInfoService",new UserInfoService());
@@ -19,4 +20,5 @@ public class UserApplication extends BaseApplication {
             e.printStackTrace();
         }
     }
+
 }
