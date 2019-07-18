@@ -110,15 +110,21 @@ public class ActivityProcessor extends AbstractProcessor {
                 .addStatement("return  APISet")
                 .build();
 
+        // 创建方法 2017/4/24 14:26
+        MethodSpec initActivtyConfig = MethodSpec.methodBuilder("initActivtyConfig")
+                .addModifiers(Modifier.PUBLIC,Modifier.STATIC) // 修饰符
+                .addStatement("com.example.baseadhesive.api.ActivityDirectional.getInstance().addMap($S);",packageName+".ActivityConfig")
+                .build();
+
         // 创建类
         TypeSpec hello = TypeSpec.classBuilder("ActivityConfig")
                 .addModifiers(Modifier.PUBLIC)
                 .addField(fieldSpec)
                 .addMethod(constructor.build())
+                .addMethod(initActivtyConfig)
                 .addSuperinterface(ClassName.get("com.example.baseadhesive.api", "IActivityConfig"))
                 .addMethod(getDefaultAPIMethod) // 添加方法
                 .build();
-
 
         // 写入文件系统 2017/4/24 14:27
         JavaFile javaFile = JavaFile.builder(packageName, hello)

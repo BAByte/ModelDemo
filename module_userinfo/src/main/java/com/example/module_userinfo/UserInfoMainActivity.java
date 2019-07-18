@@ -27,7 +27,7 @@ public class UserInfoMainActivity extends AppCompatActivity {
 
         //获取登录服务
         final ILoginService loginService = (ILoginService) ServiceFactory.getInstance()
-                .getService("com.example.module_login.LoginService");
+                .getService("LoginService");
 
         TextView name=findViewById(R.id.name);
         TextView id=findViewById(R.id.idString);
@@ -39,7 +39,6 @@ public class UserInfoMainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     loginService.release();
-
                     Class c= ActivityDirectional.getInstance().getClazz("LoginMainActivity");
                     Intent intent=new Intent(UserInfoMainActivity.this,c);
                     startActivity(intent);
@@ -52,12 +51,8 @@ public class UserInfoMainActivity extends AppCompatActivity {
             }
         });
 
-
-
         name.setText("用户名："+loginService.getName());
         id.setText("用户ID："+loginService.getId());
         isLogin.setText("用户是否登录"+loginService.isLogin());
-
-        Log.d(TAG, "onCreate: efeafefs"+getApplicationContext());
     }
 }

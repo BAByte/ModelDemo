@@ -3,9 +3,8 @@ package com.example.baseadhesive.api;
 import android.util.Log;
 
 
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 
 public class ServiceFactory {
     private static final String TAG = "ServiceFactory";
@@ -37,8 +36,12 @@ public class ServiceFactory {
         }
 
         @Override
-        public void addService(String id, Object o) {
-            hashMap.put(id, o);
+        public void addService(String id, Object o)throws IOException {
+            if (hashMap.get(id)!=null){
+                throw new IOException(id+"服务已存在或重名！");
+            }else {
+                hashMap.put(id, o);
+            }
         }
 
         @Override
@@ -61,6 +64,7 @@ public class ServiceFactory {
                 o = clazz.newInstance();
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
+                Log.e(TAG, "getDefaultAPI: 没有"+id+"这个默认服务");
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             } catch (InstantiationException e) {

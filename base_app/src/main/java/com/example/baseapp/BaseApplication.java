@@ -5,9 +5,11 @@ import android.app.Application;
 import com.example.baseadhesive.api.AppConfig;
 
 
+
+
 public abstract class BaseApplication extends Application {
 
-    public  void initMain(Application application){
+    public void mount(Application application){
         for (String module: AppConfig.mountModelApplication){
             try {
                 Class clazz = Class.forName(module);
@@ -21,6 +23,8 @@ public abstract class BaseApplication extends Application {
                 e.printStackTrace();
             }
         }
-    };
+    }
+
+
     public abstract void init(Application application);
 }
