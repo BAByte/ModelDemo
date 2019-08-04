@@ -194,7 +194,10 @@ public class MainApplication extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        onCreate(getApplicationContext());
+
+        
+        //这个方法为主模块调用，其他模块不需要调用，主要是为了选择要挂载哪些模块，以及传入Application
+        init(this,这里等下传入要加载的模块Application类的完整包名);
     }
   }
 ~~~
@@ -223,6 +226,7 @@ runtimeOnly是什么意思呢？就是只有运行时我们的主module才可以
 
 既然可以全量运行了！那library的单独调试运行怎么办？？不急！！下面开始进行,
 
+
 # 拆分
 
 我们新建module的时候会发现可以选library或者phone&Tablet。第一种就是无法进行单独调试的，只能依赖于application的module，但是第二种可呀！第二种就是application类型的！！我们可以单独装入手机进行调试！
@@ -241,6 +245,8 @@ apply plugin: 'com.android.application'
 ![eyg9e0.png](https://s2.ax1x.com/2019/08/04/eyg9e0.png)
 
 可以看到我在base_alone定义两个module，是的，我就是利用这两个phone&Tablet类型的module来启动两个library类型的module！！！！新建这两个Module后需要在项目目录下的gradle.setting导入
+
+
 
 ~~~xml
 include ':app',':lib'
@@ -293,6 +299,7 @@ public class AloneLoginApplication extends LoginApplication {
 
         //初始化登录模块的全局服务
         onCreate(getApplicationContext());
+
     }
 
     @Override
@@ -442,7 +449,6 @@ public class MainApplication extends BaseApplication {
     @Override
     public void onCreate(Context context) {
                 //这个方法为主模块调用，其他模块不需要调用，主要是为了选择要挂载哪些模块，以及传入Application
-
         init(context,MODEL_LOGIN,MODEL_USERINFO);
     }
 
@@ -482,9 +488,7 @@ dependencies {
 }
 ~~~
 
-
-
-+ 给moudle自定义Application，原因很简单，因为在应用运行，一般只有一个Application（谷歌不推荐应用多进程）。而我们的模块又需要application的Context进行其他东西的初始化，所以我们要写一个Application来让主模块进行反射调用init方法进而完成初始化
+module的Application
 
 ~~~java
 public class LoginApplication extends BaseApplication {
@@ -705,4 +709,7 @@ public class UserInfoMainActivity extends AppCompatActivity {
 
 # 具体实现
 
+
 目前我是没有做重名处理的！！！有兴趣的大佬可以去弄！！！具体实现其实非常的简单，详情可以看看源码！！！
+
+
