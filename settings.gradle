@@ -1,1 +1,9 @@
-include ':app', ':base_adhesive', ':module_login', ':base_app', ':lib', ':my_annotations', ':module_annotations', ':module_processors', ':module_userinfo'
+include ':app',':lib'
+include':base_adhesive',':base_app'
+
+include ':module_annotations',':module_processors'
+
+include ':module_login',  ':module_userinfo'
+
+include ':base_alone:alone_module_login',':base_alone:alone_module_userinfo'
+

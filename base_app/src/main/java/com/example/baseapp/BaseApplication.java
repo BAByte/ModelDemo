@@ -1,16 +1,17 @@
 package com.example.baseapp;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.res.Configuration;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public  class BaseApplication extends Application {
+public  abstract class BaseApplication extends Application {
     private List<BaseApplication> applications=new ArrayList<>();
 
-    public void init(Application application,String... s){
+    public void init(Context application,String... s){
         for (String module: s){
             try {
                 Class clazz = Class.forName(module);
@@ -28,7 +29,7 @@ public  class BaseApplication extends Application {
     }
 
 
-    public void onCreate(Application application){}
+    public abstract void onCreate(Context context);
 
     @Override
     public void onTerminate() {

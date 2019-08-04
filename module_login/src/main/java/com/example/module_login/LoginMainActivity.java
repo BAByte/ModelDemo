@@ -30,6 +30,7 @@ public class LoginMainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "onClick: 点击");
                 String s =editText.getText().toString();
 
                 //注意！这里我只是写例子，真实开发下在View直接操作Model是不太合理的。

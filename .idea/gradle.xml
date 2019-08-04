@@ -10,13 +10,15 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/base_adhesive" />
+            <option value="$PROJECT_DIR$/base_alone" />
+            <option value="$PROJECT_DIR$/base_alone/alone_module_login" />
+            <option value="$PROJECT_DIR$/base_alone/alone_module_userinfo" />
             <option value="$PROJECT_DIR$/base_app" />
             <option value="$PROJECT_DIR$/lib" />
             <option value="$PROJECT_DIR$/module_annotations" />
             <option value="$PROJECT_DIR$/module_login" />
             <option value="$PROJECT_DIR$/module_processors" />
             <option value="$PROJECT_DIR$/module_userinfo" />
-            <option value="$PROJECT_DIR$/my_annotations" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

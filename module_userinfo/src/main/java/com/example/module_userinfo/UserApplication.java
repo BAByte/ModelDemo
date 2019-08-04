@@ -1,6 +1,8 @@
 package com.example.module_userinfo;
 
-import android.app.Application;
+
+import android.content.Context;
+import android.util.Log;
 
 
 import com.example.baseadhesive.api.ServiceFactory;
@@ -12,7 +14,8 @@ public class UserApplication extends BaseApplication {
     private static final String TAG = "UserApplication";
 
     @Override
-    public void onCreate(Application application) {
+    public void onCreate(Context context) {
+        Log.d(TAG, "onCreate: ");
         ActivityConfig.initActivtyConfig();
         try {
             ServiceFactory.getInstance().addService("UserInfoService",new UserInfoService());

@@ -5,7 +5,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.moduledemo"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -28,9 +28,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation project(path: ':base_app')
-
-    if (!isRunAlone.toBoolean()) {
-        runtimeOnly project(path: ':module_login')
-        runtimeOnly project(path: ':module_userinfo')
-    }
+    //只有使用时才能调用到类
+    runtimeOnly project(path: ':module_login')
+    runtimeOnly project(path: ':module_userinfo')
 }

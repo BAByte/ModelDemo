@@ -1,10 +1,4 @@
-//如果是单独调试就为Application
-if (isRunAlone.toBoolean()) {
-    apply plugin: 'com.android.application'
-} else {
-    apply plugin: 'com.android.library'
-}
-
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 28
@@ -13,13 +7,6 @@ android {
 
 
     defaultConfig {
-
-        //单独调试需要设置Application的ID
-        if (isRunAlone.toBoolean()) {
-            applicationId "com.example.module_userinfo"
-        }
-
-
         minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
@@ -36,17 +23,6 @@ android {
         }
     }
 
-    sourceSets {
-        main {
-            // 单独调试与集成调试时使用不同的 AndroidManifest.xml 文件
-            if (isRunAlone.toBoolean()) {
-                manifest.srcFile 'src/main/manifest/AndroidManifest.xml'
-            } else {
-                manifest.srcFile 'src/main/AndroidManifest.xml'
-            }
-        }
-    }
-
 }
 
 dependencies {
@@ -57,7 +33,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation project(path: ':base_app')
+    api project(path: ':base_app')
     annotationProcessor project(path: ':module_processors')
     implementation project(path: ':module_annotations')
 }
